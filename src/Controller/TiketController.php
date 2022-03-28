@@ -61,14 +61,11 @@ class TiketController extends AbstractController
 
             $email = (new Email())
                 ->from('thexxjoker@gmail.com')
-                ->to('benmoussa.it@gmail.com')
-                //->cc('cc@example.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
-                ->subject('ADD')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->to($tiket->getUser()->getEmail())
+                ->subject(' your tiket statu is change')
+                ->subject('open tiket')
+                ->text('open tiket')
+                ->html('<p>open tiket</p>');
 
             $mailer->send($email);
 
