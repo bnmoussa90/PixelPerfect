@@ -1,0 +1,53 @@
+
+
+{% extends 'base.html.twig' %}
+{% block title %}detail{% endblock %}
+
+ {% block body %}
+
+
+     <div class="dropdown">
+         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+             Dropdown
+         </button>
+         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+             {% for statu in status %}
+
+                 <li><a class="dropdown-item" href="{{ path('statu_tiket', {id: tiket.id,idp: statu.id}) }}">{{ statu.name }}</a></li>
+             {% endfor %}
+         </ul>
+     </div>
+
+
+
+
+     <div class="card">
+         <div class="card-header">
+             {{ tiket.user.email }}
+         </div>
+         <div class="card-body">
+             <h5 class="card-title">{{ tiket.title }}</h5>
+             <p class="card-text">  {{ tiket.description }}</p>
+
+         </div>
+     </div>
+
+     {% for detail in tiket.detail %}
+         <div class="card">
+             <div class="card-header">
+                 {{ detail.user.email }}
+             </div>
+             <div class="card-body">
+
+                 <p class="card-text">  {{ detail.reponse }}</p>
+
+             </div>
+         </div>
+     {% endfor %}
+
+     {{ form(form) }}
+
+
+
+
+ {% endblock %}

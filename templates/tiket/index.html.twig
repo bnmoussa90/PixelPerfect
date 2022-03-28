@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block title %}liste{% endblock %}
+
+ {% block body %}
+
+
+     <div class="panel panel-primary">
+         <div class="d-flex flex-row-reverse">
+             <div class="p-2"><a class=" btn btn-primary" href="{{ path('add_tiket') }}">Add</a></div>
+
+         </div>
+
+
+         <div class="card-body">
+             <table class="table   table-striped">
+
+                 <thead>
+                 <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">title</th>
+                     <th scope="col">user</th>
+                     <th scope="col">detail</th>
+                     <th scope="col">edit</th>
+                     <th scope="col">delete</th>
+
+                 </tr>
+                 </thead>
+                 <tbody>
+
+
+                 {% for tiket in tikets %}
+                     <tr>
+                         <td>{{ tiket.id|e }}</td>
+                         <td>{{ tiket.title|e }}</td>
+                         <td>{{ tiket.user.email|e }}</td>
+
+                         <td><a href="{{ path('detail_tiket', {id: tiket.id}) }}">detail</a></td>
+                         <td><a href="{{ path('edit_tiket', {id: tiket.id}) }}">edit</a></td>
+                         <td><a href="{{ path('delete_tiket', {id: tiket.id}) }}">delete</a></td>
+                     </tr>
+                 {% endfor %}
+
+
+                 </tbody>
+             </table>
+
+         </div>
+     </div>
+
+
+ {% endblock %}
+
+
